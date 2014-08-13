@@ -11,7 +11,7 @@ ini_set('display_errors', '1');
 	//List extension
     $arrExt = array(".php",".html");
     
-    $lstExt = explode('|',$arrExt);
+    $lstExt = implode('|',$arrExt);
     define("LST_EXTENSION_LOOK_FOR", $lstExt);
 	//Formulaire
 	
@@ -45,7 +45,7 @@ ini_set('display_errors', '1');
 							sRecursif($allPFile.'/', $exts, $res);
 						}else{
 							//If is file
-							if(preg_match('/'.LST_EXTENSION_LOOK_FOR.'$/', $allPFile)){
+							if(preg_match('/('.LST_EXTENSION_LOOK_FOR.')$/', $allPFile)){
 								if(strpos(file_get_contents($allPFile),$_GET['w']) !== false) {
 									$res[] = $allPFile;
 								}
